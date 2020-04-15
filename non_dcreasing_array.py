@@ -11,13 +11,15 @@ def check_1(nums):
 #Time complexity O(n) and Space complexity O(1)
 def check_2(nums):
     count = 0
-    for i in range(1, len(nums)):
-        if nums[i-1]>nums[i]:
+    i = 1
+    while i<len(nums):
+        if nums[i-1]>nums[i] and count<=1:
             count += 1
-            if i-2<0 and nums[i-2]<nums[i]:
+            if i-2<0 or nums[i-2]<=nums[i]:
                 nums[i-1] = nums[i]
             else:
                 nums[i] = nums[i-1]
+        i += 1
     return count<=1
 
 print(check_1([13, 4, 7]))
